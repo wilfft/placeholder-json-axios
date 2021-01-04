@@ -9,6 +9,11 @@ And too, write a new post and send data to http.
 Every assyncronous details were thought to work perfectly.
 Some feature to avoid leak of perfomance was adopted, how to only send a new request IF the new request data is diferent from old data.
 
+
+To implement:
+a modal confirm ADDED POST and DELETED POST (for now only visible through the console)
+a 'litlle' UI improvement lol.
+
 to run:
 
 1. Run "npm install" in the extracted folder
