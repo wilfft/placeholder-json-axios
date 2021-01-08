@@ -125,3 +125,33 @@ tbm posso abrir novas rotas por fora do switch e abrri junto, se quiser
           <Route path="/new-post" component={NewPost} />
           <Route path="/:id" exact component={FullPost} />
         </Switch>
+-------------------
+Outra forma de carregar uma pagina do post, sem criar um link para cada post.
+Os objetos do router possuem methodos, goBack, goAfter, history, push etc
+podemos criar uma funçao que ao clicar, faz push para uma nova pagina, atraves do id do post clicado, manja?
+
+```javascript
+selectedPostHandler = (id) => {
+  this.props.history.push({ pathname: "/" + id });
+  console.log(this.props);
+};
+```
+
+---
+
+LINK DO NAVEGADOR ATIVO
+só é possivel, ate entao, so com um subdiretorio, como /posts/id, ai posso colocar /posts, todos ficaram ativis
+
+```javascript
+<NavLink to="/" exact>
+  HOME
+</NavLink>
+```
+
+---
+
++uma formad de chamar rota. pegando o caminho que foi passado
+
+```javascript
+<Route path={(this.props.match.url = "/:id")} exact component={FullPost} />
+```
