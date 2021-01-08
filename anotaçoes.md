@@ -69,3 +69,59 @@ You learned how to add an interceptor, getting rid of one is also easy. Simply s
 
     var myInterceptor = axios.interceptors.request.use(function () {/*...*/});
     axios.interceptors.request.eject(myInterceptor);
+
+```javascript
+<Link
+  to={{
+    pathname: "new-post",
+    hash: "#submit",  ==== LOCAL QUE ELE VAI PULAR QUANDO ABRIR
+    search: "?quick-sumit=true",   ==== PASSA PARAMETROS PELO URL
+  }}
+>
+  New Post
+</Link>
+```
+
+3 FORMAS DE PASSAR PROPS VIA ROUTER
+
+```javascript Passando props atraves de router
+ return (
+          <Post
+            key={post.id}
+            clicked={() => this.selectedPostHandler(post.id)}
+            author={post.author}
+            title={post.title}
+            // 1)  match={this.props.match} // uma das maneiras de passar props
+            // 2)  {...this.props} uma das maneiras de passar props
+          />
+            // 3)  export default withRouter(post);
+
+
+```
+
+forma correta de passar props para componentes é atraves do HOC withRouter
+envovlido com o withRouter, ele recebe os props do pai, sem o pai precisar passar explicitamente
+
+---
+
+Uso o NavLink para melhorar o menu, adicionando active automaticamente
+porem preciso usar o exact para ativar o prefixo. tambem preciso da barra antes, senao nao ativa
+
+  <li>
+                <NavLink to="/" exact>
+                  HOME
+                </NavLink>
+  </li>
+posso definir minha propria classe active com
+   <NavLink activeClassName="ativo" to="/" exact>
+                  HOME
+   </NavLink>
+--------------------
+se colocarmos somente route abaixo de route, o  /:id vai entender o /novoposto como um id,
+pra isso usamos o switch, que permite carregar somente uma rota de cada vez
+tbm posso abrir novas rotas por fora do switch e abrri junto, se quiser
+  <Switch>  a ordem é mto importante
+          <Route path="/" exact component={Posts} />
+          <Route path="/new-post" component={NewPost} />
+          <Route path="/:id" exact component={FullPost} />
+        </Switch>
