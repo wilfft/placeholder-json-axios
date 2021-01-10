@@ -155,3 +155,16 @@ só é possivel, ate entao, so com um subdiretorio, como /posts/id, ai posso col
 ```javascript
 <Route path={(this.props.match.url = "/:id")} exact component={FullPost} />
 ```
+
+---
+
+2 formas de redirencianr,
+colocando um estado, e ao salvar o post, o status ser ativado, ai no corpo do render vai ter o redirect com uma condiçao de que, se existir , ele ativa
+nessa condiçao, ele REPLACE o componente, nao tem como voltar
+
+segunda forma
+this.props.history.push("/posts");
+ao clicar submeter, ele pula pra outro url
+
+Para o mesmo efeito, de replace, eu devo usar o this.props.history.replace, ao inves de push
+-------------=
